@@ -1,4 +1,4 @@
-# ambient-front
+# Ambient (ambient-front)
 
 Frontend del proyecto Ambient
 
@@ -88,35 +88,3 @@ Se recomiendan las siguientes extensiones para VSCode:
 ### [Inicialización](docs/init.md)
 
 Instrucciones de la creación del proyecto desde cero, para futura referencia.
-
-# Ambient (ambient-front)
-
-Frontend del proyecto Ambient
-
-## Install the dependencies
-
-```bash
-yarn
-# or
-npm install
-```
-
-### Lint the files
-
-```bash
-yarn lint
-# or
-npm run lint
-```
-
-### Format the files
-
-```bash
-yarn format
-# or
-npm run format
-```
-
-### Customize the configuration
-
-See [Configuring quasar.config.js](https://v2.quasar.dev/quasar-cli-webpack/quasar-config-js).
