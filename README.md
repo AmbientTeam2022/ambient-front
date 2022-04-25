@@ -29,7 +29,7 @@ Clona este repositorio, por ejemplo desde una carpeta `/ambient/`:
 git clone https://github.com/AmbientTeam2022/ambient-front.git
 ```
 
-Se creará el subdirectorio `/ambient/ambient-front/`
+Entra al nuevo directorio `/ambient/ambient-front/`
 
 Instala las dependencias de Node usando Yarn:
 
