@@ -26,7 +26,7 @@ yarn global add @quasar/cli
 Clona este repositorio, por ejemplo desde una carpeta `/ambient/`:
 
 ```bash
-git clone https://github.com/AmbientTeam2022/ambient-front
+git clone https://github.com/AmbientTeam2022/ambient-front.git
 ```
 
 Se creará el subdirectorio `/ambient/ambient-front/`
@@ -73,14 +73,15 @@ yarn format
 
 ## Herramientas
 
-Se recomiendan las siguientes extensiones para VSCode:
+Se recomiendan las siguientes extensiones para VSCode. Debería preguntarte si quieres instalarlas.
 
 - ESLint
-- GitLens
 - Prettier
-- Sass
+- EditorConfig for VS Code
 - Vue Language Features (Volar)
 - Vue VSCode Snippets
+- Sass
+- GitLens
 - TODO Highlight
 
 ## Otros

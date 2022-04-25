@@ -4,6 +4,9 @@
     "esbenp.prettier-vscode",
     "editorconfig.editorconfig",
     "johnsoncodehk.volar",
+    "sdras.vue-vscode-snippets",
+    "syler.sass-indented",
+    "eamodio.gitlens",
     "wayou.vscode-todo-highlight"
   ],
   "unwantedRecommendations": [
