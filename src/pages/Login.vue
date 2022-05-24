@@ -1,27 +1,59 @@
 <template lang="pug">
 //- .q-pa-lg
 //-   q-input(v-model.number='cantidad' type='number' filled rounded).input-cantidad
-.column.justify-between.cuadro.q-ml-lg
+.column.justify-between.q-ml-lg
   q-img.login(
-    src = '~assets/LoginAmbient.png'
-  :fit = 'cover'
+    src = "~assets/LoginAmbient.png"
+    fit = "cover"
   )
   h2.text ¿Olvido su contraseña? haga click aqui.
-  q-span(ADSadsaDSA)
-  q-input.usuario(square outlined v-model="text" label="Ingrese su usuario")
-  q-input.password(square outlined v-model="text" type="password" label="Ingrese su contraseña")
-  br
+
+  q-input.usuario(
+    label="Ingrese su usuario"
+    v-model="username"
+    square outlined
+  )
+  q-input.password(
+    label="Ingrese su contraseña"
+    v-model="password"
+    type="password"
+    square outlined
+  )
+
   q-btn.btnIngresar(
-    label="Ingresar"
-    )
-  h2.text2 Ambient & Ambient Businnes- Todos los derechos reservados 2022
+    @click="onSubmit"
+  ) Ingresar
+
+  h2.text2 Ambient &amp; Ambient Businnes - Todos los derechos reservados {{ new Date().getFullYear() }}
 </template>
+
 <script>
+import { mapStores } from 'pinia'
+import { useAuthStore } from 'src/stores/useAuthStore'
+
 export default {
   data() {
     return {
-      usuario: '',
+      username: '',
+      password: '',
     }
+  },
+
+  computed: {
+    ...mapStores(useAuthStore),
+  },
+
+  methods: {
+    async onSubmit() {
+      const res = await this.authStore.login(this.username, this.password)
+      console.log(res)
+      if (res.status === 200) {
+        const { firstName, lastName } = res.data.userData
+        alert(`Hola ${firstName} ${lastName}! Login exitoso :)`)
+      } else {
+        alert(res.data.msg)
+      }
+    },
   },
 }
 </script>
@@ -45,8 +77,8 @@ export default {
   font-size: 20px;
 }
 .login {
-  height: 980px;
-  width: 1896px;
+  height: 100vh;
+  width: 100%;
   display: block;
 }
 .usuario {
