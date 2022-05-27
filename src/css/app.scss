@@ -7,3 +7,77 @@ h5,
 h6 {
   margin: 0;
 }
+
+/* ---------------------------------------- Flex helpers ---------------------------------------- */
+%flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-row-gap {
+  @extend %flex-row;
+  gap: 1rem;
+}
+
+%flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-col-gap {
+  @extend %flex-col;
+  gap: 1rem;
+}
+
+/* -------------------------------------- Quasar container -------------------------------------- */
+@import '~quasar/src/css/variables';
+
+$container-padding: 60px;
+
+.container,
+.container-sm,
+.container-md,
+.container-lg,
+.container-xl {
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@media (min-width: $breakpoint-sm-min) {
+
+  .container,
+  .container-sm {
+    max-width: $breakpoint-xs - $container-padding;
+  }
+}
+
+@media (min-width: $breakpoint-md-min) {
+
+  .container,
+  .container-sm,
+  .container-md {
+    max-width: $breakpoint-sm - $container-padding;
+  }
+}
+
+@media (min-width: $breakpoint-lg-min) {
+
+  .container,
+  .container-sm,
+  .container-md,
+  .container-lg {
+    max-width: $breakpoint-md - $container-padding;
+  }
+}
+
+@media (min-width: $breakpoint-xl-min) {
+
+  .container,
+  .container-sm,
+  .container-md,
+  .container-lg,
+  .container-xl {
+    max-width: $breakpoint-lg - $container-padding;
+  }
+}
