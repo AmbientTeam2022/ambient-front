@@ -1,22 +1,16 @@
-<template>
-  <q-item
-    clickable
-    tag="a"
-    target="_blank"
-    :href="link"
-  >
-    <q-item-section
-      v-if="icon"
-      avatar
-    >
-      <q-icon :name="icon" />
-    </q-item-section>
-
-    <q-item-section>
-      <q-item-label>{{ title }}</q-item-label>
-      <q-item-label caption>{{ caption }}</q-item-label>
-    </q-item-section>
-  </q-item>
+<template lang="pug">
+q-item(
+  clickable=""
+  tag="a"
+  target="_blank"
+  :href="link"
+  :to="to"
+)
+  q-item-section( v-if="icon" avatar )
+    q-icon( :name="icon" )
+  q-item-section
+    q-item-label {{ title }}
+    q-item-label( caption ) {{ caption }}
 </template>
 
 <script>
@@ -27,23 +21,28 @@ export default defineComponent({
   props: {
     title: {
       type: String,
-      required: true
+      required: true,
     },
 
     caption: {
       type: String,
-      default: ''
+      default: '',
     },
 
     link: {
       type: String,
-      default: '#'
+      default: null,
+    },
+
+    to: {
+      type: Object,
+      default: null,
     },
 
     icon: {
       type: String,
-      default: ''
-    }
-  }
+      default: '',
+    },
+  },
 })
 </script>

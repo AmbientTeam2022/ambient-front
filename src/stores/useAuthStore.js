@@ -3,8 +3,7 @@ import { api as axios } from 'src/boot/axios'
 
 export const useAuthStore = defineStore('auth', {
   state: () => ({
-    user: JSON.parse(localStorage.getItem('user')),
-    token: JSON.parse(localStorage.getItem('token')),
+    user: null,
   }),
 
   actions: {
@@ -15,6 +14,13 @@ export const useAuthStore = defineStore('auth', {
     getHeaders() {
       const { token } = JSON.parse(localStorage.getItem('user'))
       return { headers: { Authorization: `Token ${token}` } }
+    },
+
+    /**
+     * Copia al Store al usuario almacenado en LocalStorage
+     */
+    loadUser() {
+      this.user = JSON.parse(localStorage.getItem('user'))?.userData
     },
 
     /**
@@ -42,6 +48,7 @@ export const useAuthStore = defineStore('auth', {
         .post('auth/login/', data)
         .then((res) => {
           this.setUser(res.data)
+          this.loadUser()
           return res
         })
         .catch((err) => err.response)

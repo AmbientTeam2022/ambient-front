@@ -57,6 +57,7 @@ export default {
           position: 'top',
           color: 'positive',
         })
+        this.$router.push({ name: 'dashboard' })
       } else {
         this.$q.notify({
           message: res.data.msg,
