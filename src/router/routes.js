@@ -3,6 +3,7 @@ import { useAuthStore } from 'src/stores/useAuthStore'
 const routes = [
   {
     path: '/',
+    redirect: '/dashboard',
     component: () => import('layouts/MainLayout.vue'),
     beforeEnter: (to, from) => {
       const authStore = useAuthStore()
@@ -10,9 +11,14 @@ const routes = [
     },
     children: [
       {
-        path: '',
+        path: 'dashboard',
         name: 'dashboard',
         component: () => import('pages/Dashboard.vue'),
+      },
+      {
+        path: 'device',
+        name: 'deviceList',
+        component: () => import('pages/DeviceList.vue'),
       },
     ],
   },
