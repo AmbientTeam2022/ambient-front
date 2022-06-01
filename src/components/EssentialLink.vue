@@ -2,9 +2,7 @@
 q-item(
   clickable=""
   tag="a"
-  target="_blank"
-  :href="link"
-  :to="to"
+  v-bind="attrs"
 )
   q-item-section( v-if="icon" avatar )
     q-icon( :name="icon" )
@@ -42,6 +40,12 @@ export default defineComponent({
     icon: {
       type: String,
       default: '',
+    },
+  },
+  computed: {
+    attrs() {
+      const { to, href } = this
+      return to ? { to } : { href, target: '_blank' }
     },
   },
 })
