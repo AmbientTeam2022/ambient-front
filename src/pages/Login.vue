@@ -56,6 +56,7 @@ export default {
           message: `Hola ${firstName} ${lastName}! Login exitoso :)`,
           position: 'top',
           color: 'positive',
+          textColor: 'black',
         })
         this.$router.push({ name: 'dashboard' })
       } else {
