@@ -20,6 +20,11 @@ const routes = [
         name: 'deviceList',
         component: () => import('pages/DeviceList.vue'),
       },
+      {
+        path: 'device/new',
+        name: 'newDevice',
+        component: () => import('pages/NewDevice.vue'),
+      },
     ],
   },
 

@@ -2,13 +2,18 @@
 .q-pa-lg.flex-col-gap
   .row.justify-between
     h1.text-h4 Lista de Dispositivos
-    q-btn( color="primary" ) Nuevo
+    q-btn( color="primary" :to="{ name: 'newDevice' }" ) Añadir
 
   q-table(
     :rows="rows"
     :columns="columns"
     row-key="uuid"
   )
+    //- template( #body-cell-name="{ row, value }" )
+    template( #body-cell-icon="{ value }" )
+      q-td
+        q-img( :src="require(`assets/icons/${value}.png`)" )
+
 </template>
 
 <script>
@@ -27,16 +32,16 @@ const columns = [
     field: 'name',
   },
   {
-    name: 'icon',
-    label: 'Ícono',
-    align: 'center',
-    field: 'icon',
-  },
-  {
     name: 'category',
     label: 'Categoría',
     align: 'center',
     field: (row) => row.category.name,
+  },
+  {
+    name: 'icon',
+    label: 'Ícono',
+    align: 'center',
+    field: 'icon',
   },
   {
     name: 'habitat',
@@ -56,7 +61,7 @@ const rows = [
   {
     uuid: '39483',
     name: 'Terrario Grillos',
-    icon: 'grillo',
+    icon: '02',
     category: { name: 'Insectos' },
     habitat: { name: 'Terrario Grillos' },
     monitor: 'Temperatura: 23° C / Humedad: 45%',
@@ -64,7 +69,7 @@ const rows = [
   {
     uuid: '15473',
     name: 'Pez Dorado Izq',
-    icon: 'pez',
+    icon: '05',
     category: { name: 'Peces' },
     habitat: { name: 'Aquario Pez Dorado' },
     monitor: 'Temperatura: 20° C',
@@ -72,7 +77,7 @@ const rows = [
   {
     uuid: '39483',
     name: 'Pez Dorado Der',
-    icon: 'pez',
+    icon: '05',
     category: { name: 'Peces' },
     habitat: { name: 'Aquario Pez Dorado' },
     monitor: 'Temperatura: 24° C',
