@@ -8,17 +8,29 @@ export const useDeviceStore = defineStore('device', {
   actions: {
     async getDevices() {
       const headers = useAuthStore().getHeaders()
+      return axios.get('device/', { headers }).catch((err) => err.response)
+    },
+
+    async getDevice() {},
+
+    async getNewDevice(uuid, password) {
+      const headers = useAuthStore().getHeaders()
       return axios
-        .get('device/', { headers })
-        .then(res)
+        .post('device/new/', { uuid, password }, { headers })
         .catch((err) => err.response)
     },
 
-    async createDevice(device) {
+    async addDevice(uuid, data) {
       const headers = useAuthStore().getHeaders()
       return axios
-        .post('device/', device, { headers })
-        .then(res)
+        .patch(`device/add/${uuid}/`, data, { headers })
+        .catch((err) => err.response)
+    },
+
+    async removeDevice(uuid) {
+      const headers = useAuthStore().getHeaders()
+      return axios
+        .delete(`device/${uuid}/`, { headers })
         .catch((err) => err.response)
     },
   },

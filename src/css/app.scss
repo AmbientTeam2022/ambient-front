@@ -9,23 +9,23 @@ h6 {
 }
 
 /* ---------------------------------------- Flex helpers ---------------------------------------- */
-%flex-row {
+.flex-row {
   display: flex;
   flex-direction: row;
 }
 
 .flex-row-gap {
-  @extend %flex-row;
+  @extend .flex-row;
   gap: 1rem;
 }
 
-%flex-col {
+.flex-col {
   display: flex;
   flex-direction: column;
 }
 
 .flex-col-gap {
-  @extend %flex-col;
+  @extend .flex-col;
   gap: 1rem;
 }
 

@@ -11,11 +11,13 @@
         q-input.usuario(
           label="Ingrese su usuario"
           v-model="username"
+          name="loginUsername"
         )
         q-input.password(
           label="Ingrese su contraseña"
           v-model="password"
           type="password"
+          name="loginPassword"
         )
         p ¿Olvido su contraseña? haga clic #[router-link( :to="{ path: '' }" ) aquí].
 

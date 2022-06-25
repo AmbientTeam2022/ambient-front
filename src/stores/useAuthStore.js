@@ -13,7 +13,7 @@ export const useAuthStore = defineStore('auth', {
      */
     getHeaders() {
       const { token } = JSON.parse(localStorage.getItem('user'))
-      return { headers: { Authorization: `Token ${token}` } }
+      return { Authorization: `Bearer ${token}` }
     },
 
     /**
@@ -47,6 +47,7 @@ export const useAuthStore = defineStore('auth', {
       return axios
         .post('auth/login/', data)
         .then((res) => {
+          console.log(res.data)
           this.setUser(res.data)
           this.loadUser()
           return res
