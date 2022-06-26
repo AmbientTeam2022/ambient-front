@@ -33,6 +33,14 @@ h6 {
   width: 100%;
 }
 
+.gap5 {
+  gap: 5px;
+}
+
+.gap10 {
+  gap: 10px;
+}
+
 .gap30 {
   gap: 30px;
 }
@@ -87,5 +95,55 @@ $container-padding: 60px;
   .container-lg,
   .container-xl {
     max-width: $breakpoint-lg - $container-padding;
+  }
+}
+
+/* ---------------------------------------- Sensor colors --------------------------------------- */
+.sensor-okay {
+  color: $dark;
+  background-image: linear-gradient(to right,
+      rgba($positive, 0),
+      $positive,
+      rgba($positive, 0),
+    );
+}
+
+.sensor-danger {
+  color: $grey-1;
+  background-image: linear-gradient(to right,
+      rgba($negative, 0),
+      $negative,
+      rgba($negative, 0),
+    );
+}
+
+.sensor-warning {
+  color: $grey-1;
+  background-image: linear-gradient(to right,
+      rgba($warning, 0),
+      $warning,
+      rgba($warning, 0),
+    );
+}
+
+.param-name-okay {
+  color: $dark;
+}
+
+.param-name-danger {
+  color: $negative;
+  font-weight: bold;
+
+  &::before {
+    content: '⚠ ';
+  }
+}
+
+.param-name-warning {
+  color: $warning;
+  font-weight: bold;
+
+  &::after {
+    content: ' ⚠';
   }
 }

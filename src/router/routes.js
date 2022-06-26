@@ -25,6 +25,12 @@ const routes = [
         name: 'newDevice',
         component: () => import('pages/NewDevice.vue'),
       },
+      {
+        path: 'device/view/:uuid/',
+        name: 'viewDevice',
+        component: () => import('pages/ViewDevice.vue'),
+        props: true,
+      },
     ],
   },
 

@@ -18,20 +18,28 @@
 
     template( #body-cell-monitor="{ row }" )
       q-td( style="" )
+        //- TODO: Hacer esta lista como corresponde
         span( style="max-width: 200px; white-space: pre-wrap;" ) {{ row.sensor.reduce((string, sensor) => string + `${sensor.name}: ${sensor.value}\n`, '') }}
 
     template( #body-cell-actions="{ row, col }" )
       q-td( :style="col.style" )
-        q-icon(
-          name="edit"
-          class="cursor-pointer" size="sm" color="primary"
-          :to="getEditRoute(row)"
-        )
-        q-icon(
-          name="delete"
-          class="cursor-pointer" size="sm" color="negative"
-          @click="removeDevice(row.uuid)"
-        )
+        .flex-row.gap10
+          q-icon(
+            name="monitor_heart"
+            class="cursor-pointer" size="sm" color="primary"
+            @click="$router.push(getViewRoute(row))"
+          )
+          //- TODO: implementar Editar
+          //- q-icon(
+          //-   name="edit"
+          //-   class="cursor-pointer" size="sm" color="primary"
+          //-   @click="$router.push(getEditRoute(row))"
+          //- )
+          q-icon(
+            name="delete"
+            class="cursor-pointer" size="sm" color="negative"
+            @click="removeDevice(row.uuid)"
+          )
 
 </template>
 
@@ -132,11 +140,11 @@ export default {
     },
 
     // TODO: navegación a editar
-    getEditRoute(device) {
-      return {
-        name: 'newDevice',
-      }
-    },
+    getViewRoute: (device) => ({
+      name: 'viewDevice',
+      params: { uuid: device.uuid },
+    }),
+    getEditRoute: (device) => ({ name: 'newDevice' }),
 
     async removeDevice(uuid) {
       const res = await this.deviceStore.removeDevice(uuid)
