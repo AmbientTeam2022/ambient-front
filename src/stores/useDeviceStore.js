@@ -11,7 +11,12 @@ export const useDeviceStore = defineStore('device', {
       return axios.get('device/', { headers }).catch((err) => err.response)
     },
 
-    async getDevice() {},
+    async getDevice(uuid) {
+      const headers = useAuthStore().getHeaders()
+      return axios
+        .get(`device/${uuid}/`, { headers })
+        .catch((err) => err.response)
+    },
 
     async getNewDevice(uuid, password) {
       const headers = useAuthStore().getHeaders()

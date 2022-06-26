@@ -98,10 +98,10 @@ import { mapStores } from 'pinia'
 import { useAuthStore } from 'src/stores/useAuthStore'
 import { useDeviceStore } from 'src/stores/useDeviceStore'
 import { useHabitatStore } from 'src/stores/useHabitatStore'
-import paramNameMixin from 'src/util/mixins/paramNameMixin'
+import paramMixin from 'src/util/mixins/paramMixin'
 
 export default {
-  mixins: [paramNameMixin],
+  mixins: [paramMixin],
   data() {
     return {
       uuid: null,
