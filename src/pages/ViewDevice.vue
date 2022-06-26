@@ -13,7 +13,7 @@
           q-item
             q-item-section
               q-item-label( overline ).text-primary Ambiente
-              q-item-label {{ device.habitat.name }}
+              q-item-label {{ device.habitat?.name || '- - -' }}
         q-list.col-6
           q-item
             q-item-section
@@ -79,11 +79,11 @@ export default {
 
       if (res.status === 200) {
         this.device = res.data
-        this.sensors = this.device.param.map((p) => ({
-          ...p,
-          value: this.device.sensor.find((s) => s.name === p.name).value,
-        }))
-        console.log(res.data.param)
+        this.sensors =
+          this.device.param?.map((p) => ({
+            ...p,
+            value: this.device.sensor.find((s) => s.name === p.name).value,
+          })) || []
       } else {
         this.$q.notify({
           message: res.data.msg || 'Error al cargar los datos del dispositivo',
