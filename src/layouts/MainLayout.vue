@@ -32,8 +32,13 @@ q-layout(view="lHh Lpr lFf")
                     q-item-label( caption ) Organización
                 q-item
                   q-item-section
-                    q-item-label blabla
-                    q-item-label( caption ) Otro dato
+                    q-item-label
+                      .flex-row.gap5.items-center
+                        span {{ user.role.name }}
+                        q-icon( name="info" size="xs" color="primary" )
+                          q-tooltip( anchor="bottom middle" self="top end" ).bg-grey-2.text-dark
+                            PermissionsCard( :role="user.role" )
+                    q-item-label( caption ) Rol
 
             q-separator( vertical inset ).q-mx-lg
 
@@ -60,12 +65,14 @@ import EssentialLink from 'components/EssentialLink.vue'
 import { mapStores } from 'pinia'
 import { useAuthStore } from 'src/stores/useAuthStore'
 import linksList from 'src/util/linksList'
+import PermissionsCard from 'src/components/Shared/PermissionsCard.vue'
 
 export default defineComponent({
   name: 'MainLayout',
 
   components: {
     EssentialLink,
+    PermissionsCard,
   },
 
   setup() {
